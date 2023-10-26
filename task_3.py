@@ -33,5 +33,9 @@ import re
 
 def format_phone_number(text):
     # ваше решение:
-
-    return "Fail!"
+    if re.fullmatch(r'\+7 \d{3} \d{3}-\d{2}-\d{2}', text): return "+7 " + text[3:6] + " " + text[7:10] + "-" + text[11:13] + "-" + text[14:]
+    else: 
+       if re.fullmatch(r'\d{1}\(\d{3}\)\d{3}\-\d{2}\-\d{2}', text): return "+7 " + text[2:5] + " " + text[6:9] + "-" + text[10:12] + "-" + text[13:15]
+       else: 
+           if re.fullmatch(r'\d{10}', text): return "+7 " + text[0:3] + " " + text[3:6] + "-" + text[6:8] + "-" + text[8:10]
+           else: return "Fail!"
